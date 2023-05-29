@@ -1,0 +1,109 @@
+version: '3'
+services:
+    postgres:
+        image: postgres:14.5
+        volumes:
+            - ./.data/db:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+        environment:
+            - POSTGRES_USER=admin
+            - POSTGRES_PASSWORD=gf24f97
+            - POSTGRES_DB=slavia_db
+        networks:
+            - app-network
+        environment:
+            - DOCKER_HOST=tcp://docker:2375
+
+    slavia-api:
+        image: docker.techbrick.cz/slavia-api:latest
+        restart: always
+        depends_on:
+            - postgres
+        ports:
+            - "8000:8000"
+        environment:
+            - DB_HOST=postgres
+            - DB_PORT=5432
+            - DB_USERNAME=admin
+            - DB_PASSWORD=gf24f97
+            - DB_NAME=slavia_db
+        networks:
+            - app-network
+        #volumes:
+        #    - /var/run/docker.sock:/var/run/docker.sock
+
+    slavia-a:
+        image: docker.techbrick.cz/slavia-a:latest
+        #restart: always
+        depends_on:
+            - postgres
+            - slavia-api
+        networks:
+            - app-network
+        environment:
+            - DB_HOST=postgres
+            - DB_PORT=5432
+            - DB_USERNAME=admin
+            - DB_PASSWORD=gf24f97
+            - DB_NAME=slavia_db
+    #        - IP=
+    slavia-b:
+        image: docker.techbrick.cz/slavia-b:latest
+        #restart: always
+        depends_on:
+            - postgres
+            - slavia-api
+        networks:
+            - app-network
+        environment:
+            - DB_HOST=postgres
+            - DB_PORT=5432
+            - DB_USERNAME=admin
+            - DB_PASSWORD=gf24f97
+            - DB_NAME=slavia_db
+    slavia-w:
+        image: docker.techbrick.cz/slavia-w:latest
+        #restart: always
+        depends_on:
+            - postgres
+            - slavia-api
+        networks:
+            - app-network
+        environment:
+            - DB_HOST=postgres
+            - DB_PORT=5432
+            - DB_USERNAME=admin
+            - DB_PASSWORD=gf24f97
+            - DB_NAME=slavia_db
+    #slavia-u19:
+    #    image: docker.techbrick.cz/slavia-u19:latest
+    #    #restart: always
+    #    depends_on:
+    #        - postgres
+    #        - slavia-api
+    #    networks:
+    #        - app-network
+    #    environment:
+    #        - DB_HOST=postgres
+    #        - DB_PORT=5432
+    #        - DB_USERNAME=admin
+    #        - DB_PASSWORD=gf24f97
+    #        - DB_NAME=slavia_db
+    #        - IP=
+    slavia-python:
+        image: docker.techbrick.cz/python:latest
+        restart: always
+        depends_on:
+            - slavia-api
+        networks:
+            - app-network
+        logging:
+            driver: none
+        #environment:
+        #    - DOCKER_HOST=tcp://docker:2375
+        #volumes:
+        #    - /var/run/docker.sock:/var/run/docker.sock
+networks:
+  app-network:
+    #driver: bridge

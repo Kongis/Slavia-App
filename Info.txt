@@ -1,0 +1,5 @@
+bude program ktery bude zjistovat zapasy a posilat do db
+v db bude zapsany zapasy se vsim. goly, karty, soupiska atd
+kdyz app bude volat zapas tak ji posle to co ma, kdyz bude mit minimal info tak v app bude true or false na buildu, kdyz v db bude mit zapas vic jak minimal tak se nacne kompletni build s info
+app bude program ktery bude bezet na pozadi a bude hlasit nove goly, bude cekat na pozadavek, database vyhodnoti jestli novy zapis je golovy ci ne, pokud ano odpovi na pozadavek
+

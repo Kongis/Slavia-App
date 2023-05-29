@@ -1,0 +1,29 @@
+# flutter pub run icons_launcher:create
+
+icons_launcher:
+  image_path: "assets/launcher_icons/ic_launcher.png"
+  platforms:
+    android:
+      enable: true
+      image_path: "assets/launcher_icons/ic_launcher.png"
+      adaptive_background_color: '#FFFFFF'
+      #adaptive_background_image: "assets/launcher_icons/ic_background.png"
+      adaptive_foreground_image: "assets/launcher_icons/ic_launcher_foreground-removebg.png" #"assets/launcher_icons/ic_launcher_foreground.png"
+      adaptive_round_image: "assets/launcher_icons/ic_launcher_round.png"
+      adaptive_monochrome_image: "assets/launcher_icons/ic_launcher_foreground-removebg-preview(1).png"
+    ios:
+      enable: true
+      image_path: "assets/launcher_icons/ic_launcher.png"
+    #web:
+    #  enable: true
+    #  image_path: "assets/ic_logo_border.png"
+    #  favicon_path: "assets/ic_logo_round.png"
+    #macos:
+    #  enable: true
+    #  image_path: "assets/ic_logo_border.png"
+    #windows:
+    #  enable: false
+    #  image_path: "assets/ic_logo_border.png"
+    #linux:
+    #  enable: false
+    #  image_path: "assets/ic_logo_border.png"

@@ -1,0 +1,24 @@
+{
+   "compilerOptions": {
+      /*"types": [ "node" ],
+      "typeRoots": [ "./node_modules/@types" ],*/
+      "lib": [
+         "es5",
+         "es6"
+      ],
+      "esModuleInterop": true,
+      "target": "es6",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "outDir": "./build",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "sourceMap": true
+      
+   },
+   /*"include": [
+      "./src/Routes/*.ts",
+      "./src/entity/*.ts",
+
+   ]*/
+}

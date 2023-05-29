@@ -1,0 +1,12 @@
+version: '3'
+services:
+
+  postgres:
+    image: "postgres:14.5"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "gf24f97"
+      POSTGRES_DB: "slavia_db"
+

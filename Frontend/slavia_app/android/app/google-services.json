@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1029684554708",
+    "project_id": "slavia-app",
+    "storage_bucket": "slavia-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029684554708:android:d92a347fcda811492f0441",
+        "android_client_info": {
+          "package_name": "com.slavia_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029684554708-sfv08gvmuamm04jsgue0l7fuj001k3ee.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHjrGTi-8_F0_UD0fJ2dh03AmdT3H_kRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1029684554708-sfv08gvmuamm04jsgue0l7fuj001k3ee.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

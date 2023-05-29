@@ -1,0 +1,131 @@
+let data_array = [];
+let events_array = [];
+// our object
+let my_object = {}; 
+let event_object = {}; 
+// load data into object
+
+
+event_object.time = 5;
+event_object.player = "Tata";
+event_object.assist = "Vojta";
+event_object.type = "Bomba";
+
+events_array.push(event_object);
+
+event_object.time = 10;
+event_object.player = "Stepa";
+event_object.assist = "Mama";
+event_object.type = "Funguje";
+
+events_array.push(event_object);
+
+my_object.name = "stack";
+my_object.age = 20;
+my_object.hair_color = "red";
+my_object.eye_color = "green";
+my_object.events = events_array
+
+        
+// push the object to Array
+data_array.push(my_object);
+
+my_object.name = "Joo";
+my_object.age = 50;
+my_object.hair_color = "blue";
+my_object.eye_color = "yellow";
+my_object.events = events_array
+
+data_array.push(my_object);
+
+console.log(data_array)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+axios.get(url_events ,{headers: headers})
+                .then(async (response) => {                 //Maybe change response name
+                    const res = response.data.response
+                    // Index of Events object 
+                    // If Events.lenght < y
+                    // y = index of x
+                    /*for (var x of res) {
+                        let status = x.fixture.status.short
+                        Matches.update({
+                            fixture_id: fix_id
+                        },{
+                            status: status
+                        })
+                        if (status == "FM") {}
+                        else {}
+                    }*/ 
+                    let current_index = res.length
+                    if (current_index == events_index) {
+                        await sleep(2000)
+                    }
+                    else {
+                        let m = 0 
+                        for (var x of res) {
+                            m = m + 1
+                            if (m > events_index) {
+                                let time = x.time.elapsed
+                                let team_id = x.team.id
+                                let player = x.player.name
+                                let assist = x.assist.name
+                                let type = x.detail
+                                let type_short = x.type
+                                //type = type.slice(0, -2)
+                                if (type_short == "subst") {
+                                    type = "Střídání"
+                                }
+                                if (type_short == "Card") {
+                                    type = type.slice(0, -5)
+                                    if (type == "Yellow"){
+                                        type = "Žlutá karta"
+                                    }
+                                    if (type == "Red"){
+                                        type = "Červená karta"
+                                    }
+                                }
+                                if (type_short == "Goal") {
+                                    type = "Góóól"
+                                }
+                                if (assist == null) {
+                                    assist = ""
+                                }
+                                /*let event = await Events.create({
+                                    fixture_id: fix_id,
+                                    event: 
+                                    {time: time, team: team_id, player: player, assist: assist, type: type}
+                                })*/
+                                let match = await Matches.findOne({where: {fixture_id: fix_id}})
+                                //match.events = event
+                                /*Matches.update({
+                                    fixture_id: fix_id
+                                },{
+                                    events:
+                                    {}
+                                })*/
+                                //console.log(time, type, "  ", player, "-", assist)
+                                //Work goals statement
+                            }
+                        }
+                        
+                        events_index = current_index
+                        await sleep(2000)
+                    }
+                })
