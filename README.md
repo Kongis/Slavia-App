@@ -121,5 +121,14 @@ flutter run
 
 ## 📸 Screenshots
 
-*Coming soon — screenshots of the Introduction Screen, Matches Screen, and Forum Page.*
-
+| | |
+|-|-|
+|<img src="Screenshots/PostPage1.png" alt="Post Page" width="300"/>|<img src="Screenshots/PostPage2.png" alt="Post Page" width="300"/>
+|||
+|<img src="Screenshots/VideoScreen1.jpg" alt="Video Page" width="300"/>|<img src="Screenshots/VideoScreen2.jpg" alt="Video Page" width="300"/>|
+|||
+|<img src="Screenshots/MatchScreen1.png" alt="Match Page" width="300"/>|<img src="Screenshots/MatchScreen2.png" alt="Match Page" width="300"/>|
+|||
+|<img src="Screenshots/Match1.jpg" alt="Current Match" width="300"/>|<img src="Screenshots/Match2.jpg" alt="Current Match" width="300"/>|
+|||
+|<img src="Screenshots/Forum1.jpg" alt="Forum Page" width="300"/>|<img src="Screenshots/Forum2.jpg" alt="Forum Page" width="300"/>|
