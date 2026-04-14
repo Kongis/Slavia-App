@@ -1,98 +1,125 @@
-# Mobile Application Slavia
+# ⚽ Mobile Application Slavia
 
-This repository contains the mobile application Slavia, which is divided into two parts: Front-end and Back-end. The Front-end is developed in Flutter, while the Back-end is implemented in Python and Node.js using TypeScript.
+A full-stack mobile application for fans of **SK Slavia Praha**, providing real-time match updates, club news, videos, and a community forum — built with Flutter and a Docker-based microservice back-end.z
 
-## Front-end
+---
 
-The Front-end part of the application is written in Flutter and consists of the following screens:
+## 🏗️ Project Structure
 
-### Introduction Screen
+```
+Slavia-App/
+├── Backend/                  # Python & Node.js (TypeScript) microservices
+└── Frontend/
+    └── slavia_app/           # Flutter mobile application
+```
 
-Upon launching the application, the user is presented with an introduction screen that provides information about the application and its key features.
+---
 
-### Home Page
+## 🎨 Front-End (Flutter / Dart)
 
-After clicking the button on the introduction screen, the user is taken to the main core of the application, the Home Page. The Home Page includes a bottom navigation bar that allows the user to navigate through the following screens:
+The app launches with an **Introduction Screen** and then navigates to the **Home Page**, which hosts a bottom navigation bar with the following sections:
 
-- **Post Page**:
-  - This screen displays all the posts related to the Slavia football club.
-  - The posts can be filtered using a tab selector in the following categories:
-    - A-Team
-    - B-Team
-    - Woman
-    - U-19
-    - Club
-  - In the background, there is a script running that constantly updates the posts to keep them up to date.
-  - When the user clicks on a post, they are redirected to the Post Screen, where they can read the full article.
-  - To return to the menu, the user can click on the arrow icon in the top left corner or swipe from the edge of the screen.
+### 📰 Post Page
+- Displays all club-related posts, filterable by team via a tab selector: **A-Team, B-Team, Woman, U-19, Club**
+- A background script keeps posts continuously up to date
+- Tapping a post opens the **Post Screen** with the full article
+- Navigate back via the arrow icon or an edge swipe
 
-- **Video Screen**:
-  - This screen provides access to all the club videos with preview images and short descriptions.
-  - When the user clicks on a video, they are redirected to the VideoView Screen, where a built-in video player allows them to watch the video without being redirected to another application.
+### 🎬 Video Screen
+- Lists all club videos with preview images and short descriptions
+- Videos open in a **built-in player** (no redirect to external apps)
 
-- **Matches Screen**:
-  - This is the most complex section of the application. It includes all the upcoming and previous football matches of the Slavia club. The match data and details are obtained from the Back-end, which is implemented in Python and Node.js using TypeScript. The Back-end provides real-time match data using the Server-Sent Events (SSE) technology, allowing automatic updates on the page when there are changes in the server data.
-  - **Upcoming Match**:
-    - Displays the upcoming match with a countdown, league name, team logos, and names.
-    - When the user clicks on the upcoming match, a dialog window appears with all the available information about the match, such as the date and time, venue, teams, and league.
-  - **Upcoming Matches**:
-    - Displays a list of all the upcoming matches of the Slavia club.
-    - Each match includes information about the league name, date and time, venue, and participating teams.
-    - When the user clicks on an upcoming match, a dialog window appears with the match details, including league information, date and time, venue, teams, and other relevant details.
-  - **Previous Matches**:
-    - Displays a list of all the previous matches of the Slavia club, sorted from newest to oldest.
-    - When the user clicks on a previous match, they are redirected to the MatchScreen with the details of the selected match.
-  - **MatchScreen**:
-    - Displays the details of a specific match, including the league name, teams, result, date and time, venue, and other relevant information.
-    - Includes a timeline of events during the match, team lineups, and match comments.
+### 🏟️ Matches Screen *(most complex section)*
+Real-time match data delivered via **Server-Sent Events (SSE)** from the back-end.
 
-- **Forum Page Screen**:
-  - When users first visit this section, the application prompts them to enter a username to be used within the application.
-  - This section displays posts from all application users.
-  - **Post List**:
-    - Each post in the list includes the author, date added, title, a partial text, tags (if added by the author), and the number of comments.
-  - **Post Sorting and Filtering**:
-    - Users have the option to sort posts by creation date or the most recent ones.
-    - They can also apply filters based on tags to view posts with specific tags.
-  - **Forum Screen**:
-    - When users click on any post, they are redirected to the Forum Screen, where the author's name, date added, title, complete text, and tags (if added by the author) are displayed.
-    - Comments with a hierarchical structure are displayed below the post.
-  - **Comments with Hierarchy**:
-    - Users can reply to other users, creating a hierarchical structure of comments.
-    - Each comment includes the number of comments replying to that comment.
-    - Users can toggle the visibility of comments under each comment.
+| Sub-section | Description |
+|---|---|
+| **Upcoming Match** | Countdown timer, league name, team logos & names. Tap for a full details dialog (date, time, venue, teams, league). |
+| **Upcoming Matches** | Full list of future fixtures. Tap any match for a detailed dialog. |
+| **Previous Matches** | Past results sorted newest → oldest. Tap to open the Match Screen. |
+| **Match Screen** | Full match details: result, league, date/time, venue, event timeline, team lineups, and comments. |
 
-- **Setting Screen**:
-  - On the Setting Screen, users can customize various settings related to the application.
-  - **User Name**:
-    - Users can view and edit their user name.
-  - **Notifications**:
-    - Users can toggle notifications for the application on or off.
-  - **Delete Stored Offline Data**:
-    - Users can delete all the stored data used for offline functionality, including downloaded posts, videos, matches, and other cached data on their device.
-  - **Refresh Connection to Server**:
-    - Users can manually refresh the connection to the server, updating the data and ensuring synchronization with the latest information from the server.
+### 💬 Forum Page
+- First-time visitors choose a username
+- Displays community posts with author, date, title, excerpt, tags, and comment count
+- Posts can be **sorted** by creation date or most recent, and **filtered** by tags
+- **Forum Screen**: full post view with hierarchical comments (users can reply to replies)
+- Each comment shows how many replies it has; reply threads can be toggled open/closed
 
-## Back-end
+### ⚙️ Settings Screen
+| Setting | Description |
+|---|---|
+| **Username** | View and edit your in-app username |
+| **Notifications** | Toggle push notifications on/off |
+| **Delete Offline Data** | Clear all cached posts, videos, matches, and other locally stored data |
+| **Refresh Connection** | Manually re-sync with the server to get the latest data |
 
-The Back-end part of the application is divided into several sections:
+---
 
-### API-Services
+## 🖥️ Back-End (Python + Node.js / TypeScript)
 
-This section of the back-end handles the communication and data distribution through the API. It provides an interface for the front-end to communicate with the back-end and retrieve the necessary data.
+All services communicate over an **internal Docker network**.
 
-### Python
+### 🔀 API Services *(Node.js / TypeScript)*
+Central gateway between the front-end and all back-end services. Handles data distribution and client communication.
 
-This back-end section is implemented in Python and is responsible for retrieving club posts and videos. The data obtained is then sent to the API section using an internal Docker network.
+### 📰 Posts & Videos Service *(Python)*
+Retrieves club posts and video content and forwards the data to the API service.
 
-### Slavia-A
+### 🏆 Slavia-A Match Service *(Python)*
+The most complex back-end component:
+- Fetches, stores, and filters match data for the **Slavia A-team**
+- Performs a **daily check** for scheduled matches
+- When a match day is detected, triggers `Live_Match`, which:
+  - Continuously retrieves and evaluates live match data
+  - Stores updates in real time
+  - Pushes notifications to the front-end via **SSE** on any data change
 
-This back-end section contains a complex algorithm for retrieving data from previous and upcoming matches of the Slavia-A team. The algorithm takes care of storing and filtering the data. It also daily checks if there is a match scheduled for the day and, if so, triggers the Live_Match function. The Live_Match function retrieves, checks, evaluates, and stores the data using the algorithm. It sends application notifications through SSE (Server-Sent Events) in case of any data changes.
+### 🔁 Slavia-B / Slavia U-19 / Slavia-Woman Services *(Python)*
+Each of these mirrors the Slavia-A service architecture but handles data for their respective teams — covering retrieval, storage, and filtration independently.
 
-### Slavia-B, Slavia U-19, Slavia-Woman
+---
 
-These back-end sections function similarly to the Slavia-A section but are focused on the Slavia-B, Slavia U-19, and Slavia-Woman teams, respectively. Each section handles data retrieval, storage, and filtration specific to the corresponding team.
+## 🛠️ Tech Stack
 
-These back-end sections ensure the management and distribution of data in the Slavia application.
+| Layer | Technology |
+|---|---|
+| Mobile App | Flutter (Dart) |
+| API Gateway | Node.js + TypeScript |
+| Data & Match Services | Python |
+| Real-time Updates | Server-Sent Events (SSE) |
+| Containerization | Docker |
+| Inter-service Network | Docker internal network |
 
-If you have any questions or need further information, please don't hesitate to contact us.
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- [Flutter SDK](https://flutter.dev/docs/get-started/install)
+- [Docker](https://www.docker.com/) & Docker Compose
+- Node.js & npm
+- Python 3.x
+
+### Run the Back-End
+
+```bash
+cd Backend
+docker compose up --build
+# For older Docker versions: docker-compose up --build
+```
+
+### Run the Front-End
+
+```bash
+cd Frontend/slavia_app
+flutter pub get
+flutter run
+```
+
+---
+
+## 📸 Screenshots
+
+*Coming soon — screenshots of the Introduction Screen, Matches Screen, and Forum Page.*
+
